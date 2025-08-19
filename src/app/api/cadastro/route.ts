@@ -14,9 +14,22 @@ const cadastroSchema = z.object({
   congregacao: z.string().min(1, "Congregação é obrigatória"),
 });
 
-// Função para ler os dados do arquivo JSON
+type Cadastro = z.infer<typeof cadastroSchema> & {
+  id: string;
+  dataCadastro: string;
+};
+
+// Armazenamento temporário em memória para produção
+let cadastrosEmMemoria: Cadastro[] = [];
+
+// Função para ler os dados do arquivo JSON (apenas em desenvolvimento)
 async function readCadastros() {
   try {
+    // Em produção, usar memória
+    if (process.env.NODE_ENV === 'production') {
+      return { cadastros: cadastrosEmMemoria };
+    }
+    
     const dataPath = path.join(process.cwd(), "data", "cadastros.json");
     const fileContent = await fs.readFile(dataPath, "utf-8");
     return JSON.parse(fileContent);
@@ -26,10 +39,22 @@ async function readCadastros() {
   }
 }
 
-// Função para salvar os dados no arquivo JSON
-async function saveCadastros(data: { cadastros: unknown[] }) {
-  const dataPath = path.join(process.cwd(), "data", "cadastros.json");
-  await fs.writeFile(dataPath, JSON.stringify(data, null, 2), "utf-8");
+// Função para salvar os dados (apenas em desenvolvimento)
+async function saveCadastros(data: { cadastros: Cadastro[] }) {
+  try {
+    // Em produção, usar memória
+    if (process.env.NODE_ENV === 'production') {
+      cadastrosEmMemoria = data.cadastros;
+      return;
+    }
+    
+    const dataPath = path.join(process.cwd(), "data", "cadastros.json");
+    await fs.writeFile(dataPath, JSON.stringify(data, null, 2), "utf-8");
+  } catch (error) {
+    console.error("Erro ao salvar dados:", error);
+    // Em caso de erro, usar memória como fallback
+    cadastrosEmMemoria = data.cadastros;
+  }
 }
 
 export async function POST(request: NextRequest) {
@@ -40,7 +65,7 @@ export async function POST(request: NextRequest) {
     const validatedData = cadastroSchema.parse(body);
 
     // Adicionar timestamp e ID único
-    const novoCadastro = {
+    const novoCadastro: Cadastro = {
       id: Date.now().toString(),
       ...validatedData,
       dataCadastro: new Date().toISOString(),
@@ -52,7 +77,7 @@ export async function POST(request: NextRequest) {
     // Adicionar novo cadastro
     dadosExistentes.cadastros.push(novoCadastro);
 
-    // Salvar no arquivo
+    // Salvar dados
     await saveCadastros(dadosExistentes);
 
     // Log dos dados recebidos (remover em produção)
@@ -99,6 +124,7 @@ export async function GET() {
       message: "API de Cadastro da Missão Fraternal",
       version: "1.0.0",
       totalCadastros: dados.cadastros.length,
+      environment: process.env.NODE_ENV,
       endpoints: {
         POST: "/api/cadastro - Enviar novo cadastro",
         GET: "/api/cadastro - Listar todos os cadastros",
