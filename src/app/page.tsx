@@ -127,7 +127,7 @@ export default function CadastroMissaoFraternal() {
             Missão Fraternal
           </h1>
           <p className="text-gray-600 text-lg mb-2">
-            Cadastro para Participação - Setembro 2024
+            Cadastro para Participação - Setembro 2025
           </p>
           <div className="inline-flex items-center px-4 py-2 bg-blue-50 rounded-full text-sm text-blue-700 font-medium">
             <Calendar className="w-4 h-4 mr-2" />
