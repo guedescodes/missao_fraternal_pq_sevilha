@@ -1,24 +1,5 @@
 {
   "cadastros": [
-    {
-      "id": "1755638911582",
-      "nomeCompleto": "Teste",
-      "idade": 25,
-      "celular": "11999999999",
-      "motorista": true,
-      "disponibilidade": "ambos",
-      "congregacao": "Teste",
-      "dataCadastro": "2025-08-19T21:28:31.582Z"
-    },
-    {
-      "id": "1755639015903",
-      "nomeCompleto": "João Silva",
-      "idade": 30,
-      "celular": "11987654321",
-      "motorista": true,
-      "disponibilidade": "ambos",
-      "congregacao": "Congregação Teste",
-      "dataCadastro": "2025-08-19T21:30:15.903Z"
-    }
+
   ]
 }

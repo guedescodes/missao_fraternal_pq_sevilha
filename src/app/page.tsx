@@ -49,7 +49,7 @@ export default function CadastroMissaoFraternal() {
       ...data,
       motorista: data.motorista === "true",
     };
-    
+
     setIsSubmitting(true);
 
     try {
