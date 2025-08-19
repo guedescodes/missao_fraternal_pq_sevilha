@@ -14,22 +14,20 @@ const cadastroSchema = z.object({
   congregacao: z.string().min(1, "Congregação é obrigatória"),
 });
 
-type FormData = z.infer<typeof cadastroSchema>;
-
 // Função para ler os dados do arquivo JSON
 async function readCadastros() {
   try {
     const dataPath = path.join(process.cwd(), "data", "cadastros.json");
     const fileContent = await fs.readFile(dataPath, "utf-8");
     return JSON.parse(fileContent);
-  } catch (error) {
+  } catch {
     // Se o arquivo não existir, retorna estrutura vazia
     return { cadastros: [] };
   }
 }
 
 // Função para salvar os dados no arquivo JSON
-async function saveCadastros(data: any) {
+async function saveCadastros(data: { cadastros: unknown[] }) {
   const dataPath = path.join(process.cwd(), "data", "cadastros.json");
   await fs.writeFile(dataPath, JSON.stringify(data, null, 2), "utf-8");
 }
@@ -77,7 +75,7 @@ export async function POST(request: NextRequest) {
         {
           success: false,
           message: "Dados inválidos",
-          errors: error.errors,
+          errors: error.issues,
         },
         { status: 400 }
       );
