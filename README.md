@@ -4,7 +4,7 @@ Sistema de cadastro para a Missão Fraternal da Congregação Cristã no Brasil.
 
 ## 📋 Sobre o Projeto
 
-Este projeto é uma aplicação web desenvolvida em Next.js para gerenciar o cadastro de irmãos interessados em participar da Missão Fraternal que acontecerá nos dias 20 e 21 de setembro de 2024.
+Este projeto é uma aplicação web desenvolvida em Next.js para gerenciar o cadastro de irmãos interessados em participar da Missão Fraternal que acontecerá nos dias 20 e 21 de setembro de 2025.
 
 ## ✨ Funcionalidades
 
@@ -137,7 +137,7 @@ Os dados são armazenados localmente em:
       "disponibilidade": "ambos",
       "instrumento": "Violino",
       "congregacao": "Nome da Congregação",
-      "dataCadastro": "2024-01-01T00:00:00.000Z"
+      "dataCadastro": "2025-01-01T00:00:00.000Z"
     }
   ]
 }

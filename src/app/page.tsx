@@ -12,10 +12,8 @@ import {
   Calendar,
   Church,
   CheckCircle,
-  Users,
 } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
 
 // Schema de validação
 const formSchema = z.object({
@@ -136,15 +134,6 @@ export default function CadastroMissaoFraternal() {
           <p className="text-sm text-gray-500 mt-4">
             Congregação Cristã no Brasil
           </p>
-          <div className="mt-4">
-            <Link
-              href="/lista"
-              className="inline-flex items-center px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors text-sm"
-            >
-              <Users className="w-4 h-4 mr-2" />
-              Ver Lista de Cadastros
-            </Link>
-          </div>
         </div>
 
         {/* Formulário */}
@@ -341,7 +330,7 @@ export default function CadastroMissaoFraternal() {
 
         {/* Footer */}
         <div className="text-center mt-8 text-sm text-gray-500 animate-fade-in">
-          <p>© 2024 Congregação Cristã no Brasil</p>
+          <p>© 2025 Congregação Cristã no Brasil</p>
           <p className="mt-1">
             <a
               href="https://congregacaocristanobrasil.org.br/"

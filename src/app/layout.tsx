@@ -6,7 +6,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Missão Fraternal - Cadastro | Congregação Cristã no Brasil",
-  description: "Cadastro para participação na Missão Fraternal da Congregação Cristã no Brasil - Setembro 2024",
+  description: "Cadastro para participação na Missão Fraternal da Congregação Cristã no Brasil - Setembro 2025",
 };
 
 export default function RootLayout({

@@ -163,7 +163,7 @@ export default function ListaCadastros() {
             Lista de Cadastros
           </h1>
           <p className="text-gray-600 text-lg mb-4">
-            Missão Fraternal - Setembro 2024
+            Missão Fraternal - Setembro 2025
           </p>
 
           <div className="flex justify-center space-x-4 mb-6">
@@ -397,7 +397,7 @@ export default function ListaCadastros() {
 
         {/* Footer */}
         <div className="text-center mt-8 text-sm text-gray-500">
-          <p>© 2024 Congregação Cristã no Brasil</p>
+          <p>© 2025 Congregação Cristã no Brasil</p>
           <p className="mt-1">
             <a
               href="https://congregacaocristanobrasil.org.br/"
